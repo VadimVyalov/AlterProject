@@ -1,0 +1,234 @@
+// wrapper modal (actually it is calendar)
+.wrapper {
+  position: absolute;
+  width: 250px;
+  height: 276px;
+  overflow: hidden;
+  padding: 20px 16px;
+  pointer-events: none;
+  }
+
+  .btn-is-active+.wrapper {
+      pointer-events: all;
+    }
+
+.calendar .wrapper {
+  top: 33px;
+  right: 0;
+
+  @media screen and (min-width: 1280px) {
+    right: 33px;
+  }
+}
+
+
+.modal {
+  position: absolute;
+  z-index: 999;
+  width: 250px;
+  background-color: $calendarBgColor;
+  border-radius: 20px;
+  // box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.1);
+
+  transform: translateY(-200%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.is-shown {
+  border-radius: 20px;
+  opacity: 1;
+  top: 0;
+  left: 0;
+  transform: translateY(0);
+}
+
+// inside the modal (calendar)
+// header
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 27px 21px 0px 21px;
+}
+
+.calendar-header .current-date {
+  display: inline;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.38;
+  color: $shopNowButton;
+}
+
+.current-date {
+  margin-right: 6px;
+}
+
+.date {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ }
+
+ .date span {
+  fill: $hoverColor;
+   display: flex;
+ }
+
+.years {
+  position: absolute;
+  display: block;
+  left: 120;
+  top: 0;
+  background-color: $calendarBgColor;
+  cursor: pointer;
+}
+
+.years ul {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.year-btn {
+  border: none;
+  background-color: $calendarBgColor;
+}
+
+#prev,
+#next,
+.prev-year,
+.next-year {
+  color: $primarySwitchColor;
+   cursor: pointer;
+}
+
+.prev-year {
+  margin-right: 4px;
+}
+
+.calendar-icons {
+  display: flex;
+  align-items: center;
+  gap: 23px;
+  color: $hoverColor;
+}
+
+.calendar-icons span {
+  fill: $hoverColor;
+  display: flex;
+}
+
+.calendar-icons span:hover,
+.calendar-icons span:focus
+ {
+  background-color: $calendarBgColor;
+}
+
+.calendar-grid {
+  padding-top: 13px;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-bottom: 20px;
+}
+
+.calendar-grid ul {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-grid li {
+  color: $shopNowButton;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.8;
+
+  
+}
+
+.calendar-grid .weeks li {
+  margin-bottom: 14px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+  user-select:none;
+  color: rgba(60, 60, 67, 0.3);
+  pointer-events: none;
+  
+}
+
+// days
+
+.days li:nth-child(7n + 7) .button,
+.days li:nth-child(7n + 6) .button {
+  color: $secondarySwitchColor;
+}
+
+.current-month-day {
+  color: $primarySwitchColor;
+  border-color: $primarySwitchColor;
+  border-radius: 50%;
+}
+
+.button {
+  position: relative;
+  width: 26px;
+  height: 26px;
+  border: none;
+   border-radius:50%;
+  background-color: transparent;
+  cursor: pointer;
+
+  margin: 0 auto;
+
+  font-family: $primaryFontManrope;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.785;
+    letter-spacing: 0.38px;
+
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.button.inactive,
+#inactive {
+  color: rgba(60, 60, 67, 0.1);
+  cursor: default;
+  user-select: none;
+}
+
+.days li .button.active {
+  color: $whiteTextColor;
+}
+
+.days li .button:hover,
+.days li .button:focus
+ {
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: $primarySwitchColor;
+  color:$whiteTextColor;
+  
+}
+
+.days li .button.inactive:hover,
+.days li .button.inactive:focus {
+  background-color: $calendarBgColor;
+}
+
+
+.button::before {
+  position: absolute;
+  content: '';
+  left: 50%;
+  top: 50%;
+  height: 26px;
+  width: 26px;
+  z-index: -1;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.button.active::before {
+  background: $primarySwitchColor;
+}

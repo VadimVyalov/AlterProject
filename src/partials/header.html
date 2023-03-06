@@ -1,0 +1,92 @@
+<!-- 1. Зверстати header
+2. Блок навігації з елементами
+3. Поле для пошуку новин 
+4. Перемикач теми -->
+<header class="header">
+  <div class="container header-container">
+    <!-- ----------mobile menu ---------- -->
+
+    <div class="burger-wraper container">
+      <div class="menu-wraper">
+        <a class="logo" href="./index.html">News</a>
+
+        <div class="menu-btn">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <div class="menu">
+        <ul class="menu-list">
+          <li class="menu-item">
+            <svg class="menu-icon" width="32" height="32" stroke="#f4f4f4">
+              <use href="./images/icon.svg#icon-home"></use>
+            </svg>
+            <a class="menu-link" id="home" href="./index.html">Home</a>
+            <svg class="menu-icon__arrow" width="32" height="32">
+              <use href="./images/icon.svg#icon-arrow-down"></use>
+            </svg>
+          </li>
+          <li class="menu-item">
+            <svg class="menu-icon" width="32" height="32" stroke="#f4f4f4">
+              <use href="./images/icon.svg#icon-favorite"></use>
+            </svg>
+            <a class="menu-link" id="favorite" href="./favorite.html"
+              >Favorite</a
+            >
+            <svg class="menu-icon__arrow" width="32" height="32">
+              <use href="./images/icon.svg#icon-arrow-down"></use>
+            </svg>
+          </li>
+          <li class="menu-item">
+            <svg class="menu-icon" width="32" height="32" stroke="#f4f4f4">
+              <use href="./images/icon.svg#icon-read"></use>
+            </svg>
+            <a class="menu-link" id="read" href="./read.html">Read</a>
+            <svg class="menu-icon__arrow" width="32" height="32">
+              <use href="./images/icon.svg#icon-arrow-down"></use>
+            </svg>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ----------mobile menu ---------- -->
+
+    <!-- <nav class="header-nav"> -->
+    <nav class="container-nav">
+      <!-- <a class="logo" href="./index.html">News</a> -->
+      <!-- </nav> -->
+      <ul class="header-navigation">
+        <li class="menu-item">
+          <a class="menu-link" id="home-link" href="./index.html">Home</a>
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" id="favorite-link" href="./favorite.html"
+            >Favorite</a
+          >
+        </li>
+        <li class="menu-item">
+          <a class="menu-link" id="read-link" href="./read.html">Read</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="search">
+      <form class="search-form" id="search-form">
+        <input
+          class="input-text"
+          type="text"
+          name="searchQuery"
+          autocomplete="off"
+          placeholder="Search "
+        />
+        <button type="submit" class="btn-search">
+          <svg class="menu-icon-btn" width="20px" height="20px">
+            <use href="/src/images/icon.svg#icon-bx_search"></use>
+          </svg>
+        </button>
+      </form>
+    </div>
+    <include src="./partials/toggle-mode.html"></include>
+  </div>
+</header>

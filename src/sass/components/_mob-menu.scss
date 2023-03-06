@@ -1,0 +1,117 @@
+.menu-wraper {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.logo {
+  z-index: 2;
+  font-family: $primaryFontManrope;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 33px;
+  color: $primaryTextColor;
+}
+
+.menu-btn {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  margin-left: auto;
+}
+
+.menu-btn span {
+  width: 18px;
+  height: 2px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $primaryTextColor;
+  transition: all 0.5s;
+}
+
+.menu-btn span:nth-of-type(2) {
+  top: calc(50% - 6px);
+}
+
+.menu-btn span:nth-of-type(3) {
+  top: calc(50% + 6px);
+}
+
+/* Меню, которое будет появляться */
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+//  overflow: auto;
+  transform: translateX(-100%);
+  transition: transform 0.5s;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 131px;
+  gap: 24px;
+}
+
+.menu.inActions {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  transform: translateX(0);
+  z-index: 1;
+}
+
+.inActions {
+  background-color: $primaryBgColor;
+}
+
+.menu-item {
+  display: flex;
+  height: 44px;
+  list-style-type: none;
+  align-items: center;
+  gap: 13px;
+  background-color: $hoverColor;
+}
+
+.menu-icon {
+  margin-left: 16px;
+}
+
+.menu-icon__arrow {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.menu-link {
+  font-family: $primaryFontManrope;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  color: $primaryTextColor;
+}
+
+/* Меняем гамбургер иконку, когда меню открыто */
+.menu-btn.inActions span:nth-of-type(1) {
+  display: none;
+}
+
+.menu-btn.inActions span:nth-of-type(2) {
+  top: 50%;
+  transform: translate(-50%, 0%) rotate(45deg);
+}
+
+.menu-btn.inActions span:nth-of-type(3) {
+  top: 50%;
+  transform: translate(-50%, 0%) rotate(-45deg);
+}

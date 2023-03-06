@@ -1,27 +1,33 @@
 {
-  "name": "parcel-project-template",
+  "name": "alter-project",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://github.com/VadimVyalov/parcel-project-template",
+  "homepage": "https://github.com/VadimVyalov.io/AlterProject",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "parcel build src/*.html --public-url /parcel-project-template/"
+    "build": "parcel build src/*.html --public-url /AlterProject/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/VadimVyalov/parcel-project-template.git"
+    "url": "git+https://github.com/VadimVyalov/AlterProject.git"
   },
   "keywords": [],
   "author": "Vadim Vyalov <vyalov.vadim@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/VadimVyalov/parcel-project-template/issues"
+    "url": "https://github.com/VadimVyalov/AlterProject/issues"
   },
   "dependencies": {
-    "modern-normalize": "^1.1.0"
+    "axios": "^1.3.4",
+    "calendar-dates": "^2.7.2",
+    "lodash.debounce": "^4.0.8",
+    "modern-normalize": "^1.1.0",
+    "notiflix": "^3.2.6"
   },
   "devDependencies": {
+    "@parcel/resolver-glob": "^2.8.3",
     "@parcel/transformer-sass": "^2.6.0",
+    "buffer": "^5.5.0",
     "parcel": "^2.6.0",
     "parcel-reporter-clean-dist": "^1.0.4",
     "posthtml-include": "^1.7.4"

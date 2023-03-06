@@ -1,0 +1,25 @@
+.container-height {
+  height: 100vh;
+}
+
+.dropbtn {
+  margin-top: 60px;
+  color: $primaryTextColor;
+  font-size: 16px;
+  display: block;
+}
+  
+  .icon-down-read-pg.rotate {
+    transform: rotate(-180deg);
+  }
+  .icon-down-read-pg {
+    cursor: pointer;
+    transform: rotate(0deg);
+    transition: transform $durationFunction $timingFunction;
+  }
+  
+  .news-list.show {
+  display: flex;  
+  gap: 32px;
+  flex-wrap: wrap;
+  }

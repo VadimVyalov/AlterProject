@@ -1,0 +1,56 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: $primaryFontManrope;
+  font-size: $primaryFontSize;
+  font-weight: 700;
+  background-color: $primaryBgColor;
+  color: $primaryTextColor;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li,
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+address {
+  font-style: normal;
+}
+
+button {
+  display: block;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.body-scroll {
+  overflow: hidden;
+}

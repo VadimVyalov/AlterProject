@@ -1,0 +1,101 @@
+button:active{
+  color: $primaryTextColor;
+}
+
+.pagination {
+  margin-top: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+#pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pg-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 33px;
+  height: 31px;
+background-color: $primaryBgColor;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: $secondaryLineHeight;
+transition: all 500ms $timingFunction;
+  color: $primaryTextColor;
+  border: 1px solid $hoverColor;
+  border-radius: 2px;
+
+  &--border {
+    border: none;
+  }
+}
+.numbPageCount {
+  gap: 8px;
+}
+.prev-page {
+  display: flex;
+  align-items: center;
+background-color: $primaryBgColor;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  border: 1px solid $hoverColor;
+  border-radius: 2px;
+  padding: 4px 10px 5px 0;
+  transition: transform 800ms $timingFunction;
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+
+.next-page {
+  display: flex;
+  align-items: center;
+background-color: $primaryBgColor;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 22px;
+  border: 1px solid $hoverColor;
+  border-radius: 2px;
+  padding: 4px 0 5px 10px;
+  transition: transform 800ms $timingFunction;
+
+  &:active {
+    transform: scale(0.9);
+  }
+}
+.prev-page:active .arrow-left {
+  fill: $hoverColor;
+}
+.next-page:active .arrow-right {
+  fill: $hoverColor;
+}
+
+.active {
+  color: #f4f4f4;
+
+  background-color: $hoverColor;
+}
+
+.arrow-left {
+  margin-right: 10.22px;
+  margin-left: 17px;
+  fill: currentColor;
+  transition: all 250ms $timingFunction;
+}
+
+.arrow-right {
+  margin-right: 16px;
+  margin-left: 9.34px;
+  fill: currentColor;
+  transition: all 250ms $timingFunction;
+}
