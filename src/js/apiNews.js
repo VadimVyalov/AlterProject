@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { makeURL } from './apiUrl';
+export const icon = new URL('../images/icon.svg', import.meta.url);
 //import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 //! масив для якихось цілей. В ньому будуть лежати обєкти
@@ -121,18 +122,13 @@ export function dataMostPopularNormalize(item) {
   const { uri, url, title, section, abstract, published_date, media } = item;
   //const id = uri;
   const imgUrl = media.length !== 0 ? media[0]['media-metadata'][2].url : '';
-  const newDateStr = published_date
-    .slice(0, published_date.indexOf('T'))
-    .trim()
-    .split('-')
-    .reverse()
-    .join('/');
+  const newDateStr = published_date.trim().split('-').reverse().join('/');
   return { id: uri, url, title, section, abstract, imgUrl, newDateStr };
 }
 
 //! рендер картки (сам поцупив)
 //! на вхід треба передати нормалізований обїект
-const iconHeart = new URL('../images/icon.svg', import.meta.url);
+
 export function createCard(item) {
   const { id, url, title, section, abstract, imgUrl, newDateStr } = item;
 
@@ -149,7 +145,7 @@ export function createCard(item) {
           <button type="button" id="favorit-btn" class="wrap-image__btn js-tartet-favorite">
           <span id="favorit-txt" class="wrap-image__btn-text js-tartet-favorite">Add to favorite</span>
            <svg id="favorit-icon"class="wrap-image__icon js-tartet-favorite" width="16" height="16">
-                <use href ='${iconHeart}#icon-heart' class="js-tartet-favorite"></use>
+                <use href ='${icon}#icon-heart' class="js-tartet-favorite"></use>
               </svg></button>
         </div>
         <h2 class="card__title">${title}</h2>

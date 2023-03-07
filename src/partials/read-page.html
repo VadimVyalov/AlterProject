@@ -1,49 +1,36 @@
-<section class="section_home">
-  <div class="container container-height">
-      
-    <ul class="date-list">
-      <!-- <li class="dropbtn calendar-btn-span">
-          <span class="btn-span">12/12/12</span>
-            <svg class="icon-down-read-pg" width="15" height="9">
-                <use href="/src/icon.svg#icon-arrow-down"></use>
-              </svg>
-      </li> -->
-    </ul>
-  
-  <ul class="news-list"></ul>       
-         <hr>
-         
-         <div class="errorRequest visually-hidden">
-          <p class="err__text">We haven’t found news from this category</p>
-         <picture>
-          <source
-            srcset="
-              ./images/not-found-news-de-min.png    1x,
-              ./images/not-found-news-de@2x-min.png 2x
-            "
-            media="(min-width: 1280px)"
-          />
-          <source
-            srcset="
-              ./images/not-found-news-tab-min.png    1x,
-              ./images/not-found-news-tab@2x-min.png 2x
-            "
-            media="(min-width: 768px)"
-          />
-          <source
-            srcset="
-              ./images/not-found-news-mob-min.png    1x,
-              ./images/not-found-news-mob@2x-min.png 2x
-            "
-            media="(max-width: 767px)"
-          />
-          <img
-            src="./images/not-found-news-de-min.png"
-            alt="photo"
-            class="err_img"
-            loading="lazy"
-          />
-        </picture>
-      </div>
-    </div>
-</section>
+<div id="readNews" class="container">
+  <div class="date-block visually-hidden"></div>
+  <div class="errorRequest">
+    <p class="err__text">We haven’t found news from this category</p>
+
+    <picture>
+      <source
+        srcset="
+          ./images/not-found-news-de-min.png    1x,
+          ./images/not-found-news-de@2x-min.png 2x
+        "
+        media="(min-width: 1280px)"
+      />
+      <source
+        srcset="
+          ./images/not-found-news-tab-min.png    1x,
+          ./images/not-found-news-tab@2x-min.png 2x
+        "
+        media="(min-width: 768px)"
+      />
+      <source
+        srcset="
+          ./images/not-found-news-mob-min.png    1x,
+          ./images/not-found-news-mob@2x-min.png 2x
+        "
+        media="(max-width: 767px)"
+      />
+      <img
+        src="./images/not-found-news-de-min.png"
+        alt="photo"
+        class="err_img"
+        loading="lazy"
+      />
+    </picture>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-import { createCard, arrLastData } from './apiNews';
+import { createCard } from './apiNews';
 import { saveLS, loadLS, removeLS } from './lStorage';
 //import { checkFavorites } from './must-popular';
 
@@ -8,7 +8,7 @@ const errorRequest = document.querySelector('.errorRequest');
 //visually - hidden;
 
 function renderFromLS(key) {
-  let favoritNews = loadLS(key);
+  const favoritNews = loadLS(key);
 
   if (!favoritNews) {
     // console.log('=============');
@@ -31,14 +31,9 @@ function renderFromLS(key) {
 function removeFromFavorite(e) {
   if (e.target.classList.contains('js-tartet-favorite')) {
     const itemNews = e.target.closest('.js-card-item');
-    const favoriteText = itemNews.querySelector('#favorit-txt');
     const newsId = itemNews.dataset.targetId;
-
-    let favoritNews = loadLS(FAIVORIT_NEWS);
-    const targetNews = arrLastData.find(i => i.id === newsId);
-
+    const favoritNews = loadLS(FAIVORIT_NEWS);
     const hasNews = favoritNews.findIndex(i => i.id === newsId);
-    //console.log(hasNews);
 
     favoritNews.splice(hasNews, 1);
     saveLS(FAIVORIT_NEWS, favoritNews);

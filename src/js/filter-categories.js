@@ -9,7 +9,7 @@ import {
 import { sectionList, sectionNews, perPage, maxHits } from './apiUrl';
 import { saveLS, loadLS } from './lStorage';
 import { valuePage, makePaginationsBtnMurkUp } from './pagination';
-import { checkFavorites } from './must-popular';
+import { checkFavorites } from './apiCard';
 const LS_KEY = 'lastSearch';
 const FAIVORIT_NEWS = 'favoritNews';
 
