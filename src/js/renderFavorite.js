@@ -1,17 +1,13 @@
 import { createCard } from './apiNews';
 import { saveLS, loadLS, removeLS } from './lStorage';
-//import { checkFavorites } from './must-popular';
 
 const FAIVORIT_NEWS = 'favoritNews';
 const gallery = document.querySelector('.gallery');
 const errorRequest = document.querySelector('.errorRequest');
-//visually - hidden;
 
 function renderFromLS(key) {
   const favoritNews = loadLS(key);
-
   if (!favoritNews) {
-    // console.log('=============');
     return;
   }
 
@@ -42,7 +38,6 @@ function removeFromFavorite(e) {
       errorRequest.classList.remove('visually-hidden');
       gallery.classList.add('visually-hidden');
     }
-
     itemNews.remove();
   }
 }

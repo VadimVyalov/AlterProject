@@ -42,8 +42,6 @@ export function togleFaforite(e) {
     const hasNews = favoritNews.findIndex(i => i.id === newsId);
     //console.log(hasNews);
     if (hasNews < 0) {
-      console.log(targetNews);
-      console.log(newsId);
       favoritNews.push(targetNews);
       saveLS(FAIVORIT_NEWS, favoritNews);
       itemNews.classList.add('inFavorite');
@@ -65,7 +63,7 @@ export function addRead(e) {
     const itemNews = e.target.closest('.js-card-item');
     //  const favoriteText = itemNews.querySelector('#favorit-txt');
     const newsId = itemNews.dataset.targetId;
-
+    itemNews.classList.add('inRead');
     let readNews = loadLS(READ_NEWS);
     const targetNews = arrLastData.find(i => i.id === newsId);
     const readDate = new Date().toLocaleDateString('en-US', {
@@ -79,25 +77,18 @@ export function addRead(e) {
       readNews = [];
       readNews.push(targetNews);
       saveLS(READ_NEWS, readNews);
-      itemNews.classList.add('inRead');
-      //favoriteText.textContent = 'Remove from favorite';
+
       return;
     }
-
     const hasNews = readNews.findIndex(i => i.id === newsId);
-    //console.log(hasNews);
     if (hasNews < 0) {
       readNews.push(targetNews);
       saveLS(READ_NEWS, readNews);
-      itemNews.classList.add('inRead');
-      //favoriteText.textContent = 'Remove from favorite';
     } else {
       readNews.splice(hasNews, 1);
       readNews.push(targetNews);
       saveLS(READ_NEWS, readNews);
       if (!readNews.length) removeLS(READ_NEWS);
-      itemNews.classList.remove('inRead');
-      //favoriteText.textContent = 'Add to favorite';
     }
   }
 }
