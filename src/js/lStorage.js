@@ -1,7 +1,7 @@
 const saveLS = (key, value) => {
   try {
     const serializedState = JSON.stringify(value);
-    localStorage.setItem(key, serializedState);
+    window.localStorage.setItem(key, serializedState);
   } catch (error) {
     console.error('Set LS state error: ', error.message);
   }
@@ -9,11 +9,21 @@ const saveLS = (key, value) => {
 
 const loadLS = key => {
   try {
-    const serializedState = localStorage.getItem(key);
+    const serializedState = window.localStorage.getItem(key);
     return serializedState === null ? undefined : JSON.parse(serializedState);
   } catch (error) {
     console.error('Get LS state error: ', error.message);
   }
 };
 
-export { saveLS, loadLS };
+const removeLS = key => {
+  try {
+    window.localStorage.removeItem(key);
+  } catch (error) {
+    console.error('Remove LS state error: ', error.message);
+  }
+};
+
+export { saveLS, loadLS, removeLS };
+
+//alert(localStorage.getItem('favoritNews'));

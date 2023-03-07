@@ -7,8 +7,6 @@ import {
 import { articleSearchNews, perPage } from './apiUrl';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { saveLS, loadLS } from './lStorage';
-import { savedApiData } from './cards';
-//import { savedApiData } from './favorite';
 
 const LS_KEY = 'lastSearch';
 const gallery = document.querySelector('.gallery');

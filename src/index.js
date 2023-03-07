@@ -1,14 +1,11 @@
 import './js/navigations';
-import './js/cards';
 import './js/calendar';
 import './js/filter-categories';
 import './js/home-page';
 import './js/toggle-mode';
-import './js/add-to-favorite';
-import './js/search_cards';
-import './js/add-to-read';
 import './js/pagination';
 import './js/mob-input';
 import './js/articleSearch';
 import './js/weather';
 import './js/mob-menu';
+import './js/must-popular';

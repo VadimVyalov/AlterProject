@@ -9,9 +9,9 @@ import {
 import { sectionList, sectionNews, perPage, maxHits } from './apiUrl';
 import { saveLS, loadLS } from './lStorage';
 import { valuePage, makePaginationsBtnMurkUp } from './pagination';
-//import { savedApiData } from './favorite';
-import { savedApiData } from './cards';
+import { checkFavorites } from './must-popular';
 const LS_KEY = 'lastSearch';
+const FAIVORIT_NEWS = 'favoritNews';
 
 const gallery = document.querySelector('.gallery');
 const categories = document.querySelector('.categories');
@@ -37,10 +37,7 @@ async function makeSection(url) {
     const Data = await makeData(url);
     listShow.innerHTML = Data.map(rendeSection).join('');
     restart();
-  } catch (error) {
-    // const msg = error.name === 'CanceledError' ? 'Get timeout' : error;
-    // Notify.failure(`Oops ${msg}`);
-  }
+  } catch (error) {}
 }
 
 export async function makeSectionNews(url) {
@@ -48,17 +45,16 @@ export async function makeSectionNews(url) {
   const sectionHome = document.querySelector('.section_home');
   const errorRequest = document.querySelector('.errorRequest');
   arrLastData.length = 0;
-  savedApiData.length = 0;
 
   try {
     sectionNews.params.limit = perPage;
     const news = await makeData(url);
     arrLastData.push(...news.map(dataSectionNormalize));
-    savedApiData.push(...arrLastData);
     gallery.innerHTML = arrLastData.map(createCard).join('');
     gallery.prepend(weather);
     errorRequest.classList.add('visually-hidden');
     sectionHome.classList.remove('visually-hidden');
+    checkFavorites(FAIVORIT_NEWS);
   } catch (error) {}
 }
 

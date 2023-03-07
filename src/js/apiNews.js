@@ -137,7 +137,7 @@ export function createCard(item) {
   const { id, url, title, section, abstract, imgUrl, newDateStr } = item;
 
   return `
-       <li class="card js-card-item" data-target-id="${id}">
+       <li id="cardNews" data-target-id="${id}"  class="card js-card-item" >
         <div class="wrap-image">
           <img
             src="${imgUrl}"
@@ -146,9 +146,9 @@ export function createCard(item) {
            loading="lazy"
           />
           <p class="wrap-image__text">${section}</p>
-          <button type="button" class="wrap-image__btn js-tartet-favorite">
-          <span class="wrap-image__btn-text js-tartet-favorite">Add to favorite</span>
-           <svg class="wrap-image__icon js-tartet-favorite" width="16" height="16">
+          <button type="button" id="favorit-btn" class="wrap-image__btn js-tartet-favorite">
+          <span id="favorit-txt" class="wrap-image__btn-text js-tartet-favorite">Add to favorite</span>
+           <svg id="favorit-icon"class="wrap-image__icon js-tartet-favorite" width="16" height="16">
                 <use href ='${iconHeart}#icon-heart' class="js-tartet-favorite"></use>
               </svg></button>
         </div>
@@ -158,7 +158,7 @@ export function createCard(item) {
         }</p>
         <div class="wrap-info">
           <p class="wrap-info__time">${newDateStr}</p>
-          <a href="${url}" class="wrap-info__link">Read more</a>
+          <a href="${url}" target="_blank" rel="noreferrer noopener" class="wrap-info__link">Read more</a>
         </div>
       </li>
         `;
