@@ -124,6 +124,7 @@ export function createCard(item) {
             src="${imgUrl}"
             alt="photo"
            class="wrap-image__photo"
+           width=400 height=400
            loading="lazy"
           />
           <p class="wrap-image__text">${section}</p>
