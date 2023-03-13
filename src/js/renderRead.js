@@ -1,26 +1,26 @@
-import { createCard, icon, arrLastData } from './apiNews';
-import { saveLS, loadLS, removeLS } from './lStorage';
-import { checkFavorites, togleFaforite, addRead } from './apiCard';
+import { createCard, arrLastData } from './apiNews';
+import { loadLS } from './lStorage';
+import { checkFavorites, togleFaforite } from './apiCard';
 
 const READ_NEWS = 'readNews';
-const FAIVORIT_NEWS = 'favoritNews';
+const FAIVORIT_NEWS = 'favoriteNews';
 
-const gallery = document.querySelector('.date-block');
+const dataBlock = document.querySelector('.date-block');
 const errorRequest = document.querySelector('.errorRequest');
+const icon = new URL('../images/icon.svg', import.meta.url);
 
-function renderFromLS(key) {
+export function renderFromLS(key) {
   let favoritNews = loadLS(key);
-  arrLastData.length = 0;
-  arrLastData.push(...favoritNews);
+
   let readDate = '0000/00/00';
 
   if (!favoritNews) {
-    console.log('=============');
     return;
   }
-
+  arrLastData.length = 0;
+  arrLastData.push(...favoritNews);
   errorRequest.classList.add('visually-hidden');
-  gallery.classList.remove('visually-hidden');
+  dataBlock.classList.remove('visually-hidden');
 
   readDate = favoritNews[0].readDate;
   favoritNews.push({ readDate: '0' });
@@ -29,14 +29,18 @@ function renderFromLS(key) {
     if (readDate !== i.readDate) {
       const dateTitle = document.createElement('div');
       dateTitle.innerHTML = `<span class="btn-span">${readDate}</span>
-                                    <svg class="icon-down-read-pg" width="15" height="9">
+                                    <svg class="icon-down-read-pg icon-rotate" width="15" height="15">
                                          <use href="${icon}#icon-arrow-down"></use>
                                     </svg>`;
-      gallery.append(dateTitle);
+      dataBlock.append(dateTitle);
       const dateBlock = document.createElement('UL');
+      // ***********************
+      dateTitle.classList.add('date-title');
+      // **********************
       dateBlock.classList.add('gallery');
+      dateBlock.classList.add('visually-hidden');
       dateBlock.innerHTML = tempBlock.map(createCard).join('');
-      gallery.append(dateBlock);
+      dataBlock.append(dateBlock);
       readDate = i.readDate;
       tempBlock.length = 0;
     }
@@ -58,5 +62,4 @@ function lostFavorite() {
 }
 
 const readBlock = document.querySelector('#readNews');
-
 readBlock.addEventListener('click', togleFaforite);

@@ -3,14 +3,22 @@ const btnForward = document.querySelector('.next-page');
 const btnBackPage = document.querySelector('.prev-page');
 const paginContainer = document.querySelector('.pagination');
 import { paginationAll } from './apiPagination.js';
-// import { createCards } from './cards.js';
+//import { createCards } from './cards.js';
 
 btnForward.disabled = true;
-
+function smoothScroll() {
+  setTimeout(() => {
+    window.scrollTo({
+      top: 0,
+      left: 50,
+      behavior: 'smooth',
+    });
+  }, 500);
+}
 export const valuePage = {
   curPage: 1,
   numLinksTwoSide: 1,
-  totalPages: 3,
+  totalPages: 20,
   set totalPage(newTotalPages) {
     this.totalPages = newTotalPages;
   },
@@ -19,38 +27,52 @@ export const valuePage = {
   },
 };
 
-makePaginationsBtnMurkUp();
-
 paginContainer.addEventListener('click', e => {
   e.preventDefault();
-  handleButton(e.target);
-  paginationAll(valuePage.curPage);
-  // createCards(valuePage.curPage);
-  if (!e.target.classList.contains('pg-link')) {
+  if (e.target.classList.contains('pg-link--border')) {
+    return;
+  } else if (
+    e.target.classList.contains('prev-page') ||
+    e.target.classList.contains('next-page')
+  ) {
+    smoothScroll();
+    handleButton(e.target);
+    makePaginationsBtnMurkUp(valuePage);
+    paginationAll(valuePage.curPage);
+    return;
+  } else if (!e.target.classList.contains('pg-link')) {
     return;
   }
+  smoothScroll();
   valuePage.curPage = parseInt(e.target.dataset.page);
   makePaginationsBtnMurkUp(valuePage);
-
-  // createCards(valuePage.curPage);
+  paginationAll(valuePage.curPage);
 });
 
 export function makePaginationsBtnMurkUp() {
   const { totalPages, curPage, numLinksTwoSide: delta } = valuePage;
+  let numberTruncateLeft = curPage - delta;
+  let numberTruncateRight = curPage + delta;
 
-  const range = delta + 4;
+  let widthPage = document.querySelector('body').getBoundingClientRect().width;
+  if (widthPage < 767) {
+    numberTruncateLeft = curPage;
+    numberTruncateRight = curPage;
+  }
 
+  let range = delta + 4;
+  if (widthPage < 767) {
+    range = delta + 1;
+  }
   let render = '';
   let renderTwoSide = '';
   let dot = `<li class="pg-item"><a class="pg-link pg-link--border">...</a></li>`;
   let countTruncate = 0;
-  const numberTruncateLeft = curPage - delta;
-  const numberTruncateRight = curPage + delta;
   let active = '';
   for (let pos = 1; pos <= totalPages; pos++) {
     active = pos === curPage ? 'active' : '';
     if (totalPages >= 2 * range - 1) {
-      if (numberTruncateLeft > 3 && numberTruncateRight < totalPages - 3 + 1) {
+      if (numberTruncateLeft > 1 && numberTruncateRight < totalPages - 1) {
         if (pos >= numberTruncateLeft && pos <= numberTruncateRight) {
           renderTwoSide += renderPage(pos, active);
         }
@@ -88,6 +110,7 @@ function renderPage(index, active = '') {
 }
 
 function handleButton(element) {
+  smoothScroll();
   if (element.classList.contains('prev-page')) {
     valuePage.curPage--;
     handleButtonLeft();

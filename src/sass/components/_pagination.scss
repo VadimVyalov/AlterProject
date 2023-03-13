@@ -3,8 +3,9 @@ button:active{
 }
 
 .pagination {
-  margin-top: 60px;
-  display: flex;
+  display:flex;
+ margin-top: 60px;
+ 
   align-items: center;
   justify-content: center;
   gap: 8px;
@@ -32,13 +33,16 @@ transition: all 500ms $timingFunction;
   border-radius: 2px;
 
   &--border {
+    width: 13px;
     border: none;
+    background-color: transparent;
   }
 }
 .numbPageCount {
   gap: 8px;
 }
 .prev-page {
+  position: relative;
   display: flex;
   align-items: center;
 background-color: $primaryBgColor;
@@ -54,9 +58,31 @@ background-color: $primaryBgColor;
   &:active {
     transform: scale(0.9);
   }
+
+  &::after{
+    content: '';
+  background: $hoverColor;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  right: 0;
+  top: 0;
+  border-radius: 2px;
+  
+  opacity: 0;
+  transition: all 0.25s ease-in-out;
+
+  }
+  &:active::after{
+    width: 0px;
+  opacity: 1;
+  transition: 0s;
+  }
 }
 
 .next-page {
+  position: relative;
   display: flex;
   align-items: center;
 background-color: $primaryBgColor;
@@ -71,6 +97,26 @@ background-color: $primaryBgColor;
 
   &:active {
     transform: scale(0.9);
+  }
+  &::after{
+    content: '';
+  background: $hoverColor;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 2px;
+  
+  opacity: 0;
+  transition: all 0.25s ease-in-out;
+
+  }
+  &:active::after{
+    width: 0px;
+  opacity: 1;
+  transition: 0s;
   }
 }
 .prev-page:active .arrow-left {

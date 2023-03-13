@@ -1,14 +1,15 @@
 .weather__thumb {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: 32px;
   box-sizing: border-box;
-
+  overflow: hidden;
   max-width: 448px;
   // width: 288px;
-  height: auto;
+  height: 520px;
 
   font-family: $wetherFontRoboto;
   font-weight: 400;
@@ -34,19 +35,21 @@
 }
 
 .weather__icon {
-  width: 230px;
-  height: 230px;
-
-  margin-top: 25px;
-  margin-bottom: 25px;
+  width: 200px;
+  height: 200px;
+  opacity: 1;
+  transform: translateX(0);
+  transition: transform $durationFunction $timingFunction;
 
   // border-radius: 50%;
   // background: linear-gradient(180deg, #fa6c21 0%, rgba(255, 211, 88, 0.2) 100%);
   // box-shadow: inset 0px 20px 65px #fa6c21;
 
   @include tablet {
-    width: 250px;
-    height: 250px;
+    width: 235px;
+    height: 235px;
+    margin-top: 25px;
+    margin-bottom: 25px;
   }
 }
 
@@ -56,7 +59,7 @@
 }
 
 .weather__temp {
-  font-size: 42px;
+  font-size: 55px;
   margin-right: 8px;
 
   @include tablet {
@@ -146,10 +149,18 @@
 .weather__week--list {
   display: flex;
   flex-wrap: wrap;
+  position: absolute;
+  top: 140px;
   gap: 10px;
   width: calc(330px - 75px + 10px);
   margin-top: 15px;
   margin-bottom: 15px;
+  opacity: 1;
+  transform: translateX(0);
+  transition: transform $durationFunction $timingFunction;
+  @include tablet {
+    top: 200px;
+  }
 }
 
 .weather__week--thumb {
@@ -195,5 +206,7 @@
 }
 
 .display-none {
-  display: none;
+  opacity: 0;
+  transform: translateX(-100%);
+  // display: none;
 }

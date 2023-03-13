@@ -10,14 +10,14 @@ $mobile: 480px;
   --mainBgcolor: #f4f4f4;
   --countCard: 1;
   --gapCard: 30px;
-  @media screen and (min-width: $tablet) {
-    --countCard: 2;
-    --gapCard: 30px;
-  }
-  @media screen and (min-width: $desctop) {
-    --countCard: 3;
-    --gapCard: 30px;
-  }
+  // @media screen and (min-width: $tablet) {
+  //   --countCard: 2;
+  //   --gapCard: 30px;
+  // }
+  // @media screen and (min-width: $desctop) {
+  //   --countCard: 3;
+  //   --gapCard: 30px;
+  // }
 }
 
 #categories-show {
@@ -72,31 +72,34 @@ $mobile: 480px;
 .filter {
   margin: 0;
 
-  //width: 100%;
+  width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
 
   background: $calendarBgColor;
-  padding: 20px 0 20px 15px;
+  padding: 20px 0 20px 10px;
 
   position: absolute;
   top: 35px;
   left: 0;
-  overflow-y: scroll;
+  //overflow-y: scroll;
   z-index: 3;
 
   transform: translateY(-201%);
   transition: transform $durationFunction $timingFunction;
 
   &-wrapper {
+    padding: 5px;
     pointer-events: none;
     border-radius: 20px;
     background: transparent;
     position: absolute;
-    width: 165px;
+    width: 150px;
     height: 300px;
     overflow: hidden;
+    z-index: 5;
+    filter: drop-shadow(0px 10px 60px rgba(0, 0, 0, 0.2));
   }
 
   &-show {
@@ -169,13 +172,13 @@ $mobile: 480px;
 
 .categories {
   font-family: $primaryFontManrope;
+
   display: flex;
   justify-content: space-between;
   margin: 0 auto;
   padding: 0 16px;
-  // padding-left: 16px;
-  // padding-right: 16px;
 
+  min-width: 320px;
   max-width: $mobile;
 
   @media screen and (min-width: $tablet) {
@@ -233,7 +236,7 @@ $mobile: 480px;
   align-items: center;
 
   //color: $primaryTextColor;
-  color: var(--calendar-btn-color);
+  color: #a2a2a2; // var(--calendar-btn-color);
   background-color: var(--calendar-bg-color);
   text-align: center;
   padding: 5px 12px;
@@ -269,7 +272,9 @@ $mobile: 480px;
 .calendar__icon {
   fill: currentColor;
 }
-
+.calendar__btn:hover .calendar-btn-span {
+  color: $witeTextColor;
+}
 .calendar-btn-span {
   padding: 0 12px;
   color: var(--calendar-text-color);
@@ -325,4 +330,14 @@ $mobile: 480px;
   @media screen and (min-width: $tablet) {
     width: 600px;
   }
+}
+
+.inFavorite .wrap-image__icon {
+  display: block;
+  fill: $hoverColor;
+  stroke: $hoverColor;
+}
+
+.inRead {
+  opacity: 0.4;
 }

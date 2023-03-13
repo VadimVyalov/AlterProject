@@ -1,9 +1,14 @@
-// export const API_KEY = 'VPd8ESOXXGRNi6SUHc4QYJMXdqmRVK3K';
 import { KEY } from './api-key';
-//export const API_KEY = '7p9CJylKpjl89QHHczOefIddo1AI47yw';
+
 const API_KEY = KEY;
-export let perPage = 8; //не більше 10
-export const maxHits = 500;
+
+export const countSearch = {
+  sectionCount: 0,
+  rowCount: 0,
+  perPage: 8,
+  maxHits: 500,
+  newsCount: 20,
+};
 export const sectionList = {
   baseUrl: `https://api.nytimes.com/svc/news/v3/content/`,
   subUrl: 'section-list',
@@ -17,7 +22,7 @@ export const sectionNews = {
   subUrl: '',
   params: {
     'api-key': API_KEY,
-    limit: perPage,
+    limit: countSearch.perPage,
     offset: 0,
   },
 };

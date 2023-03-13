@@ -25,5 +25,3 @@ const removeLS = key => {
 };
 
 export { saveLS, loadLS, removeLS };
-
-//alert(localStorage.getItem('favoritNews'));

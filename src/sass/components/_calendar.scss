@@ -1,16 +1,19 @@
-// wrapper modal (actually it is calendar)
 .wrapper {
   position: absolute;
   width: 250px;
-  height: 276px;
+  height: 286px;
   overflow: hidden;
   padding: 20px 16px;
   pointer-events: none;
-  }
+  border-radius: 20px;
+  box-shadow: none;
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-  .btn-is-active+.wrapper {
-      pointer-events: all;
-    }
+.btn-is-active + .wrapper {
+  pointer-events: all;
+  box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.1);
+}
 
 .calendar .wrapper {
   top: 33px;
@@ -21,14 +24,12 @@
   }
 }
 
-
 .modal {
   position: absolute;
   z-index: 999;
   width: 250px;
   background-color: $calendarBgColor;
   border-radius: 20px;
-  // box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.1);
 
   transform: translateY(-200%);
   transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -40,10 +41,10 @@
   top: 0;
   left: 0;
   transform: translateY(0);
+
+  box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.1);
 }
 
-// inside the modal (calendar)
-// header
 .calendar-header {
   display: flex;
   align-items: center;
@@ -52,7 +53,7 @@
 }
 
 .calendar-header .current-date {
-  display: inline;
+  display: inline-block;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.38;
@@ -68,12 +69,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
- }
+}
 
- .date span {
+.date span {
   fill: $hoverColor;
-   display: flex;
- }
+  display: flex;
+}
 
 .years {
   position: absolute;
@@ -100,11 +101,11 @@
 .prev-year,
 .next-year {
   color: $primarySwitchColor;
-   cursor: pointer;
+  cursor: pointer;
 }
 
 .prev-year {
-  margin-right: 4px;
+  margin-right: 3px;
 }
 
 .calendar-icons {
@@ -120,8 +121,7 @@
 }
 
 .calendar-icons span:hover,
-.calendar-icons span:focus
- {
+.calendar-icons span:focus {
   background-color: $calendarBgColor;
 }
 
@@ -133,8 +133,8 @@
 }
 
 .calendar-grid ul {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
+  display: grid;
+  grid-template-columns: repeat(7, 31px);
 }
 
 .calendar-grid li {
@@ -142,60 +142,58 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 1.8;
-
-  
+  height: 31px;
 }
 
 .calendar-grid .weeks li {
-  margin-bottom: 14px;
-  font-weight: 400;
+   font-weight: 400;
   font-size: 12px;
   line-height: 1.5;
   text-align: center;
-  user-select:none;
-  color: rgba(60, 60, 67, 0.3);
+   color: rgba(60, 60, 67, 0.3);
   pointer-events: none;
-  
 }
-
-// days
 
 .days li:nth-child(7n + 7) .button,
 .days li:nth-child(7n + 6) .button {
   color: $secondarySwitchColor;
 }
 
-.current-month-day {
-  color: $primarySwitchColor;
-  border-color: $primarySwitchColor;
-  border-radius: 50%;
-}
-
 .button {
   position: relative;
-  width: 26px;
-  height: 26px;
+  width: 100%;
+  height: 100%;
   border: none;
-   border-radius:50%;
+  border-radius: 50%;
   background-color: transparent;
   cursor: pointer;
-
   margin: 0 auto;
-
   font-family: $primaryFontManrope;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 1.785;
-    letter-spacing: 0.38px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.785;
+  letter-spacing: 0.38px;
 
-    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.current-month-day.button {
+  color: $primarySwitchColor;
+  border-radius: 50%;
+  font-family: $primaryFontManrope;
+  font-weight: 700;
+  border: 1px solid $primarySwitchColor;
+  }
 
 .button.inactive,
 #inactive {
   color: rgba(60, 60, 67, 0.1);
   cursor: default;
-  user-select: none;
+ }
+
+.days li {
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 50%;
 }
 
 .days li .button.active {
@@ -203,12 +201,9 @@
 }
 
 .days li .button:hover,
-.days li .button:focus
- {
-  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+.days li .button:focus {
   background-color: $primarySwitchColor;
-  color:$whiteTextColor;
-  
+  color: $whiteTextColor;
 }
 
 .days li .button.inactive:hover,
@@ -216,19 +211,18 @@
   background-color: $calendarBgColor;
 }
 
-
 .button::before {
   position: absolute;
   content: '';
   left: 50%;
   top: 50%;
-  height: 26px;
-  width: 26px;
+  height: 100%;
+  width: 100%;
   z-index: -1;
   border-radius: 50%;
   transform: translate(-50%, -50%);
 }
 
 .button.active::before {
-  background: $primarySwitchColor;
+  background-color: $primarySwitchColor;
 }

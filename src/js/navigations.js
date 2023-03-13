@@ -10,4 +10,3 @@ if (currentPage.includes('/index.html')) {
 } else if (currentPage.includes('/read.html')) {
   read.classList.add('current');
 }
-console.log(currentPage);

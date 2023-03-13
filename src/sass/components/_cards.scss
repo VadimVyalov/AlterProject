@@ -1,6 +1,7 @@
 .card {
   position: relative;
   width: 100%;
+  // padding-bottom: 20px;
   // height: 630px;
   border-radius: 4px;
   transition: box-shadow $durationFunction $timingFunction,
@@ -38,11 +39,11 @@
   &::after {
     content: '';
     display: inline-block;
-    width: 15px;
-    height: 10px;
-    // background-image: url('/src/images/icon-read'); ---  way to picture
-    background-color: $TextHaveReadColor;
-
+    width: 18px;
+    height: 18px;
+    background-image: url('/src/images/icon-read.svg');
+    background-repeat: no-repeat;
+    background-position-y: 5.5px;
     margin-left: 6px;
   }
 }
@@ -92,6 +93,7 @@
 }
 
 .wrap-image__btn-text {
+  pointer-events: none;
   font-weight: 500;
   font-size: 12px;
   line-height: 16px;
@@ -131,7 +133,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 19px;
-  margin-bottom: 20px;
+  margin-bottom: 42px;
   display: block;
   min-height: 57px;
   padding: 0 4px 0 4px;
@@ -145,11 +147,14 @@
 }
 
 .wrap-image__icon {
+  pointer-events: none;
   display: block;
   fill: transparent;
   stroke: $hoverColor;
 }
-
+.fill-heard {
+  pointer-events: none;
+}
 .wrap-info__time {
   position: absolute;
   bottom: 4px;
@@ -177,16 +182,4 @@
     font-size: 16px;
     line-height: 22px;
   }
-}
-
-.inFavorite.inRead button {
-  background-color: rgba(255, 255, 255, 1);
-}
-
-.inFavorite #favorit-icon {
-  fill: red;
-}
-
-.inRead {
-  opacity: 0.4;
 }

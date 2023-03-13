@@ -1,11 +1,13 @@
-import './js/navigations';
-import './js/calendar';
-import './js/filter-categories';
-import './js/home-page';
-import './js/toggle-mode';
-import './js/pagination';
-import './js/mob-input';
-import './js/articleSearch';
-import './js/weather';
-import './js/mob-menu';
-import './js/must-popular';
+import './js/toggle-mode.js';
+import './js/mob-input.js';
+import './js/mob-menu.js';
+import './js/navigations.js';
+import './js/calendar.js';
+
+import './js/filter-categories.js';
+import './js/home-page.js';
+import './js/articleSearch.js';
+import './js/weather.js';
+//import './js/pagination.js';
+
+import './js/most-popular';

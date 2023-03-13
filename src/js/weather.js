@@ -8,9 +8,7 @@ const weatherWeekList = document.querySelector('.weather__week--list');
 
 const apiKey = 'ac97801f712add3fe97dbc6a96855cd7';
 
-import wIcon from '../images/wether-icons/*.png';
-
-// Обновления элементов HTML
+import wIcon from '../images/wether-icons/*.webp';
 
 async function updateWeatherInfo(weatherData) {
   weatherTemp.textContent = `${Math.round(weatherData.main.temp)}°C`;
@@ -29,7 +27,6 @@ async function updateWeatherInfo(weatherData) {
   weatherIcon.setAttribute('src', urlIcons);
 }
 
-// Получение координат пользователя
 function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(getWeatherData, errorCallback);
@@ -41,8 +38,6 @@ function getLocation() {
     console.log('Geolocation is not supported by this browser.');
   }
 }
-
-// Отправка запроса на получение данных о погоде
 function getWeatherData(position) {
   const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
   fetch(weatherApiUrl)
@@ -53,7 +48,6 @@ function getWeatherData(position) {
     .catch(error => console.log(error));
 }
 
-// Если геопозиция не определена
 function errorCallback() {
   const urlKyiv = `https://api.openweathermap.org/data/2.5/weather?q=Kyiv&units=metric&appid=${apiKey}`;
   fetch(urlKyiv)
@@ -77,10 +71,11 @@ function errorWeekWeatherCallback() {
         const weatherDay = weatherData[i];
 
         const date = new Date(weatherDay.dt * 1000);
+        const dayOfMonth = date.getDate();
         const dayOfWeek = daysOfWeek[date.getDay()];
 
         const iconCode = weatherDay.weather[0].icon;
-        const iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
+        const iconUrl = wIcon[`${iconCode}`];
 
         const tempDay = Math.round(weatherDay.main.temp);
         const tempNight = Math.round(weatherData[i + 4].main.temp);
@@ -90,14 +85,11 @@ function errorWeekWeatherCallback() {
 
         const weatherDate = document.createElement('p');
         weatherDate.classList.add('weather__week-date');
-        weatherDate.textContent = dayOfWeek;
+        weatherDate.textContent = `${dayOfMonth} ${dayOfWeek}`;
 
         const weatherIcon = document.createElement('img');
         weatherIcon.classList.add('weather__week-icon');
-        weatherIcon.setAttribute(
-          'src',
-          `http://openweathermap.org/img/w/${iconCode}.png`
-        );
+        weatherIcon.setAttribute('src', iconUrl);
         weatherIcon.setAttribute('alt', 'Weather icon');
 
         const weatherTempThumb = document.createElement('div');
@@ -124,8 +116,6 @@ function errorWeekWeatherCallback() {
     .catch(error => console.log(error));
 }
 
-// Получение погоды на неделю
-
 function getWeatherForWeek(position) {
   const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=metric`;
 
@@ -140,10 +130,11 @@ function getWeatherForWeek(position) {
         const weatherDay = weatherData[i];
 
         const date = new Date(weatherDay.dt * 1000);
+        const dayOfMonth = date.getDate();
         const dayOfWeek = daysOfWeek[date.getDay()];
 
         const iconCode = weatherDay.weather[0].icon;
-        const iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`;
+        const iconUrl = wIcon[`${iconCode}`];
 
         const tempDay = Math.round(weatherDay.main.temp);
         const tempNight = Math.round(weatherData[i + 4].main.temp);
@@ -153,14 +144,11 @@ function getWeatherForWeek(position) {
 
         const weatherDate = document.createElement('p');
         weatherDate.classList.add('weather__week-date');
-        weatherDate.textContent = dayOfWeek;
+        weatherDate.textContent = `${dayOfMonth} ${dayOfWeek}`;
 
         const weatherIcon = document.createElement('img');
         weatherIcon.classList.add('weather__week-icon');
-        weatherIcon.setAttribute(
-          'src',
-          `http://openweathermap.org/img/w/${iconCode}.png`
-        );
+        weatherIcon.setAttribute('src', iconUrl);
         weatherIcon.setAttribute('alt', 'Weather icon');
 
         const weatherTempThumb = document.createElement('div');
@@ -188,8 +176,6 @@ function getWeatherForWeek(position) {
       console.log('An error occurred:', error);
     });
 }
-
-// Переключение погоды при нажатии кнопки
 const weekButton = document.querySelector('.weather__week');
 function toggleWeather(e) {
   weatherIcon.classList.toggle('display-none');
@@ -206,6 +192,4 @@ function renameBtn() {
 
 weekButton.addEventListener('click', toggleWeather);
 weekButton.addEventListener('click', renameBtn);
-// Вызов функции для получения данных о погоде
 getLocation();
-// getWeatherForWeek();
