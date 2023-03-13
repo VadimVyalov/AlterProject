@@ -1,6 +1,5 @@
-import { createCard } from './apiNews';
 import { saveLS, loadLS, removeLS } from './lStorage';
-
+import { checkFavorites, togleFaforite, createCard } from './apiCard';
 const FAIVORIT_NEWS = 'favoritNews';
 const gallery = document.querySelector('.gallery');
 const errorRequest = document.querySelector('.errorRequest');

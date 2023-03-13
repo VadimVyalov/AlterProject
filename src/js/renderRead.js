@@ -1,6 +1,6 @@
-import { createCard, arrLastData } from './apiNews';
+import { arrLastData } from './apiNews';
 import { loadLS } from './lStorage';
-import { checkFavorites, togleFaforite } from './apiCard';
+import { checkFavorites, togleFaforite, createCard } from './apiCard';
 
 const READ_NEWS = 'readNews';
 const FAIVORIT_NEWS = 'favoriteNews';
