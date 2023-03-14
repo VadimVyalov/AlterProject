@@ -62,7 +62,17 @@ export function dataSectionNormalize(item) {
     .split('-')
     .reverse()
     .join('/');
-  return { id: uri, url, title, section, abstract, imgUrl, newDateStr };
+  const newAbstract =
+    abstract.length > 112 ? abstract.slice(0, 113) + '...' : abstract;
+  return {
+    id: uri,
+    url,
+    title,
+    section,
+    abstract: newAbstract,
+    imgUrl,
+    newDateStr,
+  };
 }
 
 export function dataArticleSearchNormalize(item) {
@@ -86,12 +96,14 @@ export function dataArticleSearchNormalize(item) {
     .split('-')
     .reverse()
     .join('/');
+  const newAbstract =
+    abstract.length > 112 ? abstract.slice(0, 113) + '...' : abstract;
   return {
     id: uri,
     url: web_url,
     title: main,
     section: section_name,
-    abstract,
+    abstract: newAbstract,
     imgUrl,
     newDateStr,
   };
@@ -107,5 +119,15 @@ export function dataMostPopularNormalize(item) {
     .split('-')
     .reverse()
     .join('/');
-  return { id: uri, url, title, section, abstract, imgUrl, newDateStr };
+  const newAbstract =
+    abstract.length > 112 ? abstract.slice(0, 113) + '...' : abstract;
+  return {
+    id: uri,
+    url,
+    title,
+    section,
+    abstract: newAbstract,
+    imgUrl,
+    newDateStr,
+  };
 }

@@ -4,7 +4,13 @@ import { sectionList, sectionNews, countSearch } from './apiUrl';
 import { saveLS, loadLS } from './lStorage';
 import { valuePage, makePaginationsBtnMurkUp } from './pagination';
 //import { savedApiData } from './cards';
-import { createCard, addRead, checkFavorites, checkRead } from './apiCard';
+import {
+  createCard,
+  addRead,
+  checkFavorites,
+  checkRead,
+  togleFaforite,
+} from './apiCard';
 import { renderFromLast } from './most-popular';
 
 const LS_KEY = 'lastSearch';
@@ -209,3 +215,4 @@ window.addEventListener('click', e => {
 });
 
 gallery.addEventListener('click', addRead);
+gallery.addEventListener('click', togleFaforite);

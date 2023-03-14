@@ -3,14 +3,15 @@ import { arrLastData } from './apiNews';
 
 const FAIVORIT_NEWS = 'favoriteNews';
 const READ_NEWS = 'readNews';
-const iconHeart = new URL('../images/icon.svg', import.meta.url);
+
+export const icon = new URL('../images/icon.svg', import.meta.url);
 
 export function togleFaforite(e) {
-  if (e.target.classList.contains('favorit-bth')) {
+  // console.log(e.target);
+  if (e.target.classList.contains('js-tartet-favorite')) {
     const itemNews = e.target.closest('.js-card-item');
-    const favoriteText = itemNews.querySelector('favorite-description');
+    const favoriteText = itemNews.querySelector('.favorite-description');
     const newsId = itemNews.dataset.targetId;
-
     let favoritNews = loadLS(FAIVORIT_NEWS);
     let targetNews = arrLastData.find(i => i.id === newsId);
 
@@ -57,14 +58,14 @@ export function checkFavorites(key) {
 }
 
 export function addRead(e) {
-  // e.preventDefault();
+  e.preventDefault();
 
   if (e.target.classList.contains('wrap-info__link')) {
     const itemNews = e.target.closest('.js-card-item');
-    const readText = itemNews.querySelector('.wrap-image__active');
+    //  const readText = itemNews.querySelector('.js-read-description');
     const newsId = itemNews.dataset.targetId;
     itemNews.classList.add('inRead');
-    readText.classList.remove('visually-hidden');
+    // readText.classList.remove('visually-hidden');
     let readNews = loadLS(READ_NEWS);
     const targetNews = arrLastData.find(i => i.id === newsId);
 
@@ -107,8 +108,8 @@ export function checkRead(key) {
     cardNews.forEach(i => {
       if (allId.includes(i.dataset.targetId)) {
         i.classList.add('inRead');
-        //       const readText = i.querySelector('.js-read-description');
-        //        readText.classList.remove('visually-hidden');
+        // const readText = i.querySelector('.js-read-description');
+        // readText.classList.remove('visually-hidden');
       }
     });
   }
@@ -119,29 +120,31 @@ export function createCard(item) {
 
   return `
          <li class="card  js-card-item" data-target-id="${id}">
-      <div class="wrap-image">
-          <img
-            src="${imgUrl}"
-            alt="photo"
-           class="wrap-image__photo"
-           width=400 height=400
-           loading="lazy"
-          />
-          <p class="wrap-image__text">${section}</p>
-          <button type="button" class="wrap-image__btn js-tartet-favorite favorit-bth">
-          <span class="js-favorite-description">Add to favorite</span>
-           <svg class="js-tartet-favorite" width="16" height="16">
-                <use href ='${iconHeart}#icon-heart' class="icon-favorite"></use>
-              </svg></button>
-        </div>
-        <h2 class="card__title">${title}</h2>
-        <p class="card__description">${
-          abstract.length > 112 ? abstract.slice(0, 113) + '...' : abstract
-        }</p>
-          <p class="wrap-info__time">${newDateStr}</p>
-          <a href="${url}" title="read oridginal news" class="wrap-info__link" target="_blank" rel="noreferrer noopener">
-          <span class="visually-hidden">read oridginal news</span> Read more </a>
-          <p class="js-read-description visually-hidden">Already read</p>
+
+           <button type="button" class="toogle-favorite js-tartet-favorite">
+              <span class="favorite-description">Add to favorite</span>
+              <svg  width="16" height="16">
+                <use href ='${icon}#icon-heart' class="icon-favorite"></use>
+              </svg>
+          </button> 
+          
+          <div class="wrap-image">
+             <p class="js-read-description">Already read</p>
+             <p class="wrap-image__text">${section}</p>
+              <img
+                src="${imgUrl}"
+                alt="photo"
+                class="wrap-image__photo"
+                width=400 height=400
+                loading="lazy"
+                />
+            <h2 class="card__title">${title}</h2>
+            <p class="card__abstract">${abstract}</p>
+            <p class="wrap-info__time">${newDateStr}</p>
+            <a href="${url}" title="read oridginal news" class="wrap-info__link" target="_blank" rel="noreferrer noopener">
+                <span class="visually-hidden">read oridginal news</span> Read more 
+            </a>
+         </div>   
       </li>
      `;
 }

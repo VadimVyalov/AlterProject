@@ -1,6 +1,6 @@
 import { saveLS, loadLS, removeLS } from './lStorage';
 import { checkFavorites, togleFaforite, createCard } from './apiCard';
-const FAIVORIT_NEWS = 'favoritNews';
+const FAIVORIT_NEWS = 'favoriteNews';
 const gallery = document.querySelector('.gallery');
 const errorRequest = document.querySelector('.errorRequest');
 
@@ -14,11 +14,11 @@ function renderFromLS(key) {
   gallery.classList.remove('visually-hidden');
   gallery.innerHTML = favoritNews.map(createCard).join('');
 
-  const cardNews = Array.from(document.querySelectorAll('#cardNews'));
+  const cardNews = Array.from(document.querySelectorAll('.card'));
 
   cardNews.forEach(i => {
     i.classList.add('inFavorite');
-    const favoriteText = i.querySelector('#favorit-txt');
+    const favoriteText = i.querySelector('.favorite-description');
     favoriteText.textContent = 'Remove from favorite';
   });
 }

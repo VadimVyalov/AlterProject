@@ -13,22 +13,16 @@
 
     transform: scale(1.02);
   }
-  @include tablet {
-    width: calc((100% - 32px) / 2);
-    // width: 353px;
-    height: 675px;
-  }
-  @include desktop {
-    // width: 395px;
-    width: calc((100% - 64px) / 3);
-  }
 }
 
-.card-had-read {
-  opacity: 40%;
+.js-read-description {
+  display: none;
 }
 
-.wrap-image__active {
+.inRead .js-read-description {
+  display: block;
+  pointer-events: none;
+  cursor: none;
   color: $TextHaveReadColor;
   font-weight: 700;
   font-size: 14px;
@@ -41,7 +35,7 @@
     display: inline-block;
     width: 18px;
     height: 18px;
-    background-image: url('/src/images/icon-read.svg');
+    // background-image: url('/src/images/icon-read.svg');
     background-repeat: no-repeat;
     background-position-y: 5.5px;
     margin-left: 6px;
@@ -56,6 +50,7 @@
   height: 395px;
   margin-bottom: 20px;
 }
+
 .wrap-image__text {
   font-weight: 500;
   font-size: 12px;
@@ -71,7 +66,7 @@
   border-radius: 0px 4px 4px 0px;
 }
 
-.wrap-image__btn {
+.toogle-favorite {
   position: absolute;
   bottom: 12px;
   right: 8px;
@@ -92,7 +87,12 @@
   }
 }
 
-.wrap-image__btn-text {
+.toogle-favorite * {
+  pointer-events: none;
+  z-index: 1;
+}
+
+.favorite-description {
   pointer-events: none;
   font-weight: 500;
   font-size: 12px;
@@ -129,7 +129,7 @@
   }
 }
 
-.card__description {
+.card__abstract {
   font-weight: 400;
   font-size: 14px;
   line-height: 19px;
@@ -146,15 +146,17 @@
   }
 }
 
-.wrap-image__icon {
+.toogle-favorite svg {
   pointer-events: none;
   display: block;
   fill: transparent;
   stroke: $hoverColor;
 }
-.fill-heard {
-  pointer-events: none;
+
+.inFavorite .toogle-favorite svg {
+  fill: $hoverColor;
 }
+
 .wrap-info__time {
   position: absolute;
   bottom: 4px;

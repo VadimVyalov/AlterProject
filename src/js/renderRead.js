@@ -1,13 +1,12 @@
 import { arrLastData } from './apiNews';
 import { loadLS } from './lStorage';
-import { checkFavorites, togleFaforite, createCard } from './apiCard';
+import { checkFavorites, togleFaforite, createCard, icon } from './apiCard';
 
 const READ_NEWS = 'readNews';
 const FAIVORIT_NEWS = 'favoriteNews';
 
 const dataBlock = document.querySelector('.date-block');
 const errorRequest = document.querySelector('.errorRequest');
-const icon = new URL('../images/icon.svg', import.meta.url);
 
 export function renderFromLS(key) {
   let favoritNews = loadLS(key);
