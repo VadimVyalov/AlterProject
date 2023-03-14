@@ -51,12 +51,11 @@
       type="font/woff"
       crossorigin
     />
-
+    <link rel="preconnect" href="https://api.nytimes.com" />
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico" />
 
     <link rel="preload" href="./sass/index.scss" as="style" />
     <link rel="preload" href="./index.js" as="script" />
-    <link rel="stylesheet" href="./sass/index.scss" />
   </head>
   <body>
     <div class="wrapper-page">
@@ -64,6 +63,7 @@
       <include src="./partials/home-page-main.html"></include>
       <include src="./partials/footer.html"></include>
     </div>
+    <link rel="stylesheet" href="./sass/index.scss" />
     <script type="module" src="./index.js"></script>
   </body>
 </html>
